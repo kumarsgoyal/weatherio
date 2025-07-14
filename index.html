@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>weather</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Explore accurate and real-time weather information for cities around the world with weather.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./assest/ico/favicon.ico" type="image/svg+xml">
+        <link rel="stylesheet" href="./assest/css/nunito-sans.css">
+        <link rel="stylesheet" href="./assest/css/style.css">
+
+    </head>
+    <body class="day-mode">
+        <header class="header">
+            <div class="container">
+                <a href="" class="logo">
+                    <img src="assest/images/logo.png" alt="logo">
+                </a>
+                <div class="search-view" data-search-view>
+                    <div class="search-wrapper">
+                        <input type="search" name="search" class="search-field" placeholder="search city ..." autocomplete="off" data-search-field>
+                        <span class="m-icon leading-icon">search</span>
+                        <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+                            <span class="m-icon">arrow_back</span>
+                        </button>
+                    </div>
+                    <div class="search-result" data-search-result>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
+                        <span class="m-icon">search</span>
+                    </button>
+                    <a href="#/current-location" class="btn-primary has-state" data-current-location-btn>
+                        <span class="m-icon">
+                            <img src="./assest/images/location.gif" alt="Location Icon" style="height: 100%; width: auto;" />
+                        </span>
+                        <span class="span">Current Location</span>
+                    </a>
+                    <span>
+                        <svg class="day_night_animation_svg" xmlns="http://www.w3.org/2000/svg" viewBox="200 200 400 200">
+                            <defs>
+                                <filter id="shadow_day_night_animation" x="-100%" y="-100%" width="250%" height="250%">
+                                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                                    <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
+                                    <feFlood id="glowAlpha" flood-color="#000" flood-opacity="0.07"></feFlood>
+                                    <feComposite in2="offsetblur" operator="in"></feComposite>
+                                    <feMerge>
+                                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    </feMerge>
+                                </filter>
+                                <mask id="moonMask_day_night_animation">
+                                    <rect id="outlineFill_day_night_animation"  x="225" y="215" width="350" height="170" rx="86" ry="86" fill="#FFF" stroke="#000" stroke-width="0"/>
+                                    <circle class="moonMask_day_night_animation" cx="487" cy="300" r="66" fill="#06070B"/>
+                                </mask>
+                                <clipPath id="outlineMask_day_night_animation">
+                                    <use xlink:href="#outlineFill_day_night_animation"/>
+                                </clipPath>
+                                <path id="cloud_day_night_animation" d="M20.67,42.52h39c22,0,18-16.52,11.19-17.51,1.93-7.5-1.94-25-23.19-25s-24,18-24,18S12.75,13.2,5,18.83C-3.8,25.15-2.33,42.52,20.67,42.52Z"/>
+                            </defs>
+                            <g class="whole" >
+                                <rect class="outline_day_night_animation" x="220" y="210" width="360" height="180" rx="90" ry="90" fill="#85E8FE" stroke="#FCFDFE" stroke-width="10"/>
+                                <g class="starGroup_day_night_animation" fill="#FFF" clip-path="url(#outlineMask_day_night_animation)">
+                                    <polygon points="405 248.25 406.58 254.42 412.75 256 406.58 257.58 405 263.75 403.42 257.58 397.25 256 403.42 254.42 405 248.25"/>
+                                    <path d="M427.33,301.9a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+                                    <path d="M402.59,367.21a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+                                    <polygon points="447 325.5 450.17 337.83 462.5 341 450.17 344.17 447 356.5 443.83 344.17 431.5 341 443.83 337.83 447 325.5"/>
+                                    <path d="M464,241.53a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+                                    <polygon points="496 274.25 497.58 280.42 503.75 282 497.58 283.58 496 289.75 494.42 283.58 488.25 282 494.42 280.42 496 274.25"/>
+                                    <path d="M503.53,351.38a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+                                    <path d="M537.18,249.45a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+                                    <path d="M553,322.68a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+                                </g>
+                                <circle class="sun_day_night_animation" cx="486" cy="300" r="66" fill="#FEC100"/>
+                                <g mask="url(#moonMask_day_night_animation)">
+                                    <circle class="moon_day_night_animation" cx="403" cy="300" r="66" fill="#FFF" opacity="0"/>
+                                </g>
+                                <g class="planeGroup" fill="#FFF" clip-path="url(#outlineMask_day_night_animation)" opacity="1">
+                                    <path class="plane_day_night_animation" d="M611.12,262.15l-7.16,0-6.48-5.43-1.06.58,1.93,4.88-3.67.06-3.48-3.37-.78.36,1.26,3.05h-.58a27.07,27.07,0,0,0,4.6,2.24s8.57,0,12.37,0H611c.65,0,2.19,0,2.19-1.25C613.19,262.26,612.05,262.15,611.12,262.15Z"  fill="#fff"/>
+                                    <line class="contrail_day_night_animation" x1="590.17" y1="264" x2="246.51" y2="264" fill="none" stroke="#fff" stroke-width="1" opacity="0.53"/>
+                                </g>
+                                <g class="cloud_day_night_animationGroup" fill="#FFF" clip-path="url(#outlineMask_day_night_animation)">
+                                    <g class="cloud_day_night_animation" filter="url(#shadow_day_night_animation)">
+                                        <rect x="515.79" y="314.92" width="47.15" height="10.37" rx="5.19" ry="5.19"/>
+                                        <circle cx="521.45" cy="313.98" r="11.32"/>
+                                        <circle cx="540.84" cy="305.91" r="15.61"/>
+                                        <circle cx="556.82" cy="316.34" r="8.96"/>
+                                    </g>
+                                    <g class="cloud_day_night_animation"  filter="url(#shadow_day_night_animation)">
+                                        <rect x="397.85" y="349.02" width="92.34" height="10.37" rx="5.19" ry="5.19" transform="translate(888.03 708.41) rotate(180)"/>
+                                        <circle cx="484.53" cy="348.08" r="11.32"/>
+                                        <circle cx="432.65" cy="332.46" r="24.66"/>
+                                        <circle cx="464.35" cy="338.11" r="17.51"/>
+                                        <circle cx="404.21" cy="348.19" r="11.32"/>
+                                    </g>
+                                </g>
+                            </g>
+                            <rect class="hit_day_night_animation" x="220" y="210" width="360" height="180" rx="90" ry="90" fill="transparent" stroke="none" stroke-width="0"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </header>
+    <main>
+        <article class="container" data-container>
+            <div class="content-left">
+                <!-- current weater -->
+                <section class="section current-weather" aria-label="current weather" data-current-weather></section>
+                <!-- forecast -->
+                <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast></section>
+            </div>
+            <div class="content-right">
+                <!-- highlight -->
+                <section class="section highlights" aria-labelledby="highlights-lable" data-highlights></section>
+                <section class="section hourly-forecast" aria-label="hourly forecast" data-hourly-forecast></section>
+            </div>
+            <div class="loading" data-loading>
+            </div>
+        </article>
+    </main>
+
+    <!-- 404 Section -->
+    <section class="error-content" data-error-content>
+        <h2 class="heading">Looks like you're lost</h2>
+        <p class="body-1">404</p>
+        <a href="" class="btn-primary">
+            <span class="span">Go Home</span>
+        </a>
+    </section>
+
+        <script type="module" src="./assest/js/app.js"></script>
+        <script type="module" src="./assest/js/route.js"></script>
+
+        <script src="./assest/js/jquery.js"></script>
+        <script src="./assest/js/TweenMax.js"></script>
+
+        <script src="./assest/js/day-night-animation.js"></script>
+        <script src="./assest/js/animation.js"></script>
+
+    </body>
+</html>
