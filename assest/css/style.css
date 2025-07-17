@@ -130,7 +130,9 @@ sup {
 html {
 	font-family: var(--ff-nunito-sans);
 	font-size: 10px;
-	scroll-behavior: smooth
+	scroll-behavior: smooth;
+	/* font-family:"Sue Ellen Francisco", cursive; */
+	/* font-family: "Shadows Into Light", cursive; */
 }
 
 body {
